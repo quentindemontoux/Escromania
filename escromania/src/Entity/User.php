@@ -37,9 +37,24 @@ class User implements UserInterface
     private $password;
 
     /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $balance;
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
-    private $pseudo;
+    private $firstName;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $lastName;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dateOfBirth;
 
     public function getId(): ?int
     {
@@ -119,15 +134,52 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
-    public function getPseudo(): ?string
+    public function getBalance(): ?float
     {
-        return $this->pseudo;
+        return $this->balance;
     }
 
-    public function setPseudo(string $pseudo): self
+    public function setBalance(float $balance): self
     {
-        $this->pseudo = $pseudo;
+        $this->balance = $balance;
 
         return $this;
     }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(string $firstName): self
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(string $lastName): self
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    public function getDateOfBirth(): ?\DateTimeInterface
+    {
+        return $this->dateOfBirth;
+    }
+
+    public function setDateOfBirth(\DateTimeInterface $dateOfBirth): self
+    {
+        $this->dateOfBirth = $dateOfBirth;
+
+        return $this;
+    }
+
 }

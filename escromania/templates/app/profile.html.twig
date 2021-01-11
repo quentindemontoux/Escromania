@@ -4,7 +4,26 @@
 
 {% block body %}
 
-    <h1> Hey {{ app.user.pseudo }} ! This is your profile. </h1>
-    <a href="{{ path('app_logout') }}">Logout</a> </p>
+    <h1> Hey {{ app.user.firstName }} {{ app.user.lastName }} ! This is your profile. </h1>
+    <div>
+        <h2> Those are your current informations. </h2>
+        <p>First name : {{ app.user.firstName }}</p>
+        <p>Last name : {{ app.user.lastName }}</p>
+        <p>Date of Birth : {{ app.user.dateOfBirth|date("m-d-Y") }}</p>
+        <p>Email : {{ app.user.email }}</p>       
+        <p>Balance : 
+            {% if (app.user.balance == null) %}
+                Empty
+            {% else %}
+                {{ app.user.balance }}
+            {% endif %}
+        </p>
+    </div>
+    <div>
+        <a href="{{ path('games') }}" class="btn btn-primary">View games</a>
+        <a href="/users/profile/{{app.user.id}}" class="btn btn-primary">Edit profile</a>
+        <a href="{{ path('app_logout') }}" class="btn btn-primary">Logout</a>
+    </div>
+    
 
 {% endblock %}

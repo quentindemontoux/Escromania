@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Games{% endblock %}
+
+{% block body %}
+
+    <h1> Game list </h1>
+    <div>
+        <a href="{{ path('profile') }}" class="btn btn-primary">View profile</a>
+        <a href="{{ path('app_logout') }}" class="btn btn-primary">Logout</a>
+    </div>
+    
+
+{% endblock %}

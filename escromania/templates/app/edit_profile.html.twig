@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Profile Editor{% endblock %}
+
+{% block body %}
+
+    <h1> Profile Editor </h1>
+    <div>
+        {{form(editForm)}}
+        <a href="{{ path('profile') }}" class="btn btn-primary">Cancel</a>
+    </div>
+    
+
+{% endblock %}
