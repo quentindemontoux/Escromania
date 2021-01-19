@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Game;
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\GameRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,7 +21,7 @@ class AppController extends AbstractController
     public function index(): Response
     {
         return $this->render('app/index.html.twig', [
-            'controller_name' => 'AppController',
+            'controller_name' => 'AppController'
         ]);
     }
 
@@ -29,7 +31,7 @@ class AppController extends AbstractController
     public function profile(): Response
     {
         return $this->render('app/profile.html.twig', [
-            'controller_name' => 'AppController',
+            'controller_name' => 'AppController'
         ]);
     }
 
@@ -66,10 +68,31 @@ class AppController extends AbstractController
     /**
      * @Route("/users/games", name="games")
      */
-    public function games(): Response
+    public function games(GameRepository $repository): Response
     {
+        $games = $repository->findAll();
         return $this->render('app/games.html.twig', [
-            'controller_name' => 'AppController',
+            'games' => $games
+        ]);
+    }
+
+    /**
+     * @Route("/users/games/id/{id}", name="game_details")
+     */
+    public function game_details(Game $game): Response
+    {
+        return $this->render('app/game_details.html.twig', [
+            'game' => $game
+        ]);
+    }
+
+    /**
+     * @Route("/users/games/search", name="search")
+     */
+    public function search(): Response
+    {
+        return $this->render('app/search.html.twig', [
+            'controller_name' => 'AppController'
         ]);
     }
 

@@ -7,7 +7,30 @@
     <h1> Game list </h1>
     <div>
         <a href="{{ path('profile') }}" class="btn btn-primary">View profile</a>
+        <a href="{{path('search')}}" class="btn btn-primary">Search</a>
         <a href="{{ path('app_logout') }}" class="btn btn-primary">Logout</a>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            {% for game in games %}
+                <div class="col-md-4">
+                    <div class="card" >
+                        <img src="https://via.placeholder.com/150" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"> {{game.name}} </h5>                            
+                            <p class="card-text">Price : {{game.price}} €</p>
+                            <p>Release date : {{game.releasedAt | date("m-d-Y")}} </p>
+                            <p>Genres : </p>
+                            {% for tag in game.tags %}
+                                <p>- {{tag.name}} </p>
+                            {% endfor %} </p>
+                            <a href="/users/games/id/{{game.id}}" class="btn btn-primary">View game</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}            
+        </div>
     </div>
     
 
