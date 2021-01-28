@@ -20,9 +20,7 @@ class AppController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('app/index.html.twig', [
-            'controller_name' => 'AppController'
-        ]);
+        return $this->render('app/index.html.twig', []);
     }
 
     /**
@@ -30,13 +28,11 @@ class AppController extends AbstractController
      */
     public function profile(): Response
     {
-        return $this->render('app/profile.html.twig', [
-            'controller_name' => 'AppController'
-        ]);
+        return $this->render('app/profile.html.twig', []);
     }
 
     /**
-     * @Route("/users/profile/{id}", name="edit_profile")
+     * @Route("/users/profile/id/{id}", name="edit_profile")
      */
     public function edit_profile(User $user, Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncoder): Response
     {
@@ -61,8 +57,16 @@ class AppController extends AbstractController
 
         return $this->render('app/edit_profile.html.twig', [
             'user' => $user,
-            "editForm" => $form->createView()
+            'editForm' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/users/profile/funds", name="funds")
+     */
+    public function funds(): Response
+    {
+        return $this->render('app/funds.html.twig', []);
     }
 
     /**
@@ -91,9 +95,7 @@ class AppController extends AbstractController
      */
     public function search(): Response
     {
-        return $this->render('app/search.html.twig', [
-            'controller_name' => 'AppController'
-        ]);
+        return $this->render('app/search.html.twig', []);
     }
 
 }

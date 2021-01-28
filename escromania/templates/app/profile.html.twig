@@ -21,7 +21,8 @@
     </div>
     <div>
         <a href="{{ path('games') }}" class="btn btn-primary">View games</a>
-        <a href="/users/profile/{{app.user.id}}" class="btn btn-primary">Edit profile</a>
+        <a href="/users/profile/id/{{app.user.id}}" class="btn btn-primary">Edit profile</a>
+        <a href="{{ path('funds') }}" class="btn btn-primary">Add funds</a>        
         <a href="{{ path('app_logout') }}" class="btn btn-primary">Logout</a>
     </div>
     
